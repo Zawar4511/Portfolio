@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A&Z Pool Services — Professional Pool Care</title>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #040d1a;
+    --bg2:       #071525;
+    --bg3:       #0d2035;
+    --card:      #0a1e33;
+    --border:    #122d48;
+    --border2:   #1a3d5c;
+    --teal:      #00c8cc;
+    --teal2:     #00a8b0;
+    --teal-dim:  rgba(0,200,204,0.12);
+    --teal-glow: rgba(0,200,204,0.25);
+    --green:     #22d3a0;
+    --green-dim: rgba(34,211,160,0.12);
+    --yellow:    #f5c542;
+    --yellow-dim:rgba(245,197,66,0.12);
+    --red:       #ff5c5c;
+    --red-dim:   rgba(255,92,92,0.12);
+    --text:      #e8f4f8;
+    --text2:     #7fa8c0;
+    --text3:     #4a7090;
+    --font-head: 'Syne', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', sans-serif;
+    --r:         12px;
+    --r2:        8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(0,120,160,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,80,130,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 50% 50%, rgba(0,60,100,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap { position: relative; z-index: 1; max-width: 1280px; margin: 0 auto; padding: 0 24px 80px; }
+
+  header {
+    padding: 52px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+    position: relative;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 260px; height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+  }
+  .header-inner { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .logo-block {}
+  .logo-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  h1 span { color: var(--teal); }
+  .tagline { font-size: 14px; color: var(--text2); margin-top: 8px; font-weight: 300; }
+
+  .unit-toggle {
+    display: flex;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 50px;
+    padding: 4px;
+    gap: 2px;
+  }
+  .unit-toggle button {
+    background: none;
+    border: none;
+    color: var(--text2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .unit-toggle button.active {
+    background: var(--teal);
+    color: var(--bg);
+  }
+
+  .volume-section {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: var(--r);
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+  .volume-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--teal2), transparent);
+  }
+  .vol-label {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .vol-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .big-input {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: var(--r2);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 22px;
+    font-weight: 600;
+    padding: 12px 18px;
+    width: 180px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .big-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-glow); }
+  .unit-badge {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid rgba(0,200,204,0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+  .vol-hint { font-size: 12px; color: var(--text3); }
+  .vol-hint strong { color: var(--text2); }
+
+  .calculators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .calc-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .calc-card:hover { border-color: var(--border2); box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
+  .calc-card.status-good  { border-color: rgba(34,211,160,0.3); }
+  .calc-card.status-warn  { border-color: rgba(245,197,66,0.3); }
+  .calc-card.status-bad   { border-color: rgba(255,92,92,0.35); }
+
+  .card-stripe {
+    height: 3px;
+    background: var(--border2);
+    transition: background 0.3s;
+  }
+  .calc-card.status-good  .card-stripe { background: var(--green); }
+  .calc-card.status-warn  .card-stripe { background: var(--yellow); }
+  .calc-card.status-bad   .card-stripe { background: var(--red); }
+
+  .card-body { padding: 22px 24px 24px; }
+
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+  .card-title-block {}
+  .card-title {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .card-subtitle { font-size: 11.5px; color: var(--text3); margin-top: 2px; font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+  .status-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--border2);
+    margin-top: 5px;
+    flex-shrink: 0;
+    box-shadow: none;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .calc-card.status-good  .status-dot { background: var(--green); box-shadow: 0 0 8px rgba(34,211,160,0.6); }
+  .calc-card.status-warn  .status-dot { background: var(--yellow); box-shadow: 0 0 8px rgba(245,197,66,0.6); }
+  .calc-card.status-bad   .status-dot { background: var(--red); box-shadow: 0 0 8px rgba(255,92,92,0.6); }
+
+  .ideal-range-bar {
+    background: var(--bg3);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+  }
+  .ideal-label { color: var(--text3); }
+  .ideal-val { color: var(--teal); font-weight: 600; }
+
+  .tooltip-wrap { position: relative; display: inline-flex; align-items: center; margin-left: 6px; }
+  .tooltip-icon {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    font-size: 10px;
+    color: var(--text3);
+    display: flex; align-items: center; justify-content: center;
+    cursor: help;
+    font-family: var(--font-mono);
+    transition: border-color 0.2s;
+  }
+  .tooltip-icon:hover { border-color: var(--teal); color: var(--teal); }
+  .tooltip-box {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 240px;
+    background: #0d2840;
+    border: 1px solid var(--border2);
+    border-radius: var(--r2);
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text2);
+    line-height: 1.5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 100;
+    white-space: normal;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .tooltip-box::after {
+    content: '';
+    position: absolute;
+    top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--border2);
+  }
+  .tooltip-wrap:hover .tooltip-box { opacity: 1; }
+
+  .input-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 14px; flex-wrap: wrap; }
+  .input-group { flex: 1; min-width: 100px; }
+  .input-group label {
+    display: block;
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 5px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .param-input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .param-input:focus { border-color: var(--teal); box-shadow: 0 0 0 2px var(--teal-glow); }
+  .param-input::placeholder { color: var(--text3); font-size: 13px; }
+
+  .select-input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 10px 12px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .select-input:focus { border-color: var(--teal); }
+  .select-input option { background: #0d2840; }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: var(--bg3);
+    color: var(--text3);
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+  .status-badge.good  { background: var(--green-dim); color: var(--green); border-color: rgba(34,211,160,0.3); }
+  .status-badge.warn  { background: var(--yellow-dim); color: var(--yellow); border-color: rgba(245,197,66,0.3); }
+  .status-badge.bad   { background: var(--red-dim); color: var(--red); border-color: rgba(255,92,92,0.3); }
+
+  .result-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r2);
+    padding: 14px 16px;
+    margin-top: 4px;
+    min-height: 64px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .result-box.active { border-color: var(--border2); background: var(--bg2); }
+  .result-empty { font-size: 12px; color: var(--text3); font-style: italic; }
+  .result-action {
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .result-dose {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .result-dose .dose-num { color: var(--teal); }
+  .result-dose .dose-unit { font-size: 13px; color: var(--text2); margin-left: 4px; }
+  .result-note { font-size: 11.5px; color: var(--text3); margin-top: 6px; line-height: 1.4; }
+  .result-good { font-size: 13px; color: var(--green); display: flex; align-items: center; gap: 6px; }
+  .result-dilute { font-size: 12px; color: var(--yellow); }
+
+  .card-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 16px 0;
+  }
+
+  .summary-panel {
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-radius: var(--r);
+    overflow: hidden;
+    margin-top: 12px;
+  }
+  .summary-header {
+    background: var(--bg3);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .summary-icon {
+    width: 36px; height: 36px;
+    background: var(--teal-dim);
+    border: 1px solid rgba(0,200,204,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .summary-title {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .summary-subtitle { font-size: 12px; color: var(--text3); margin-top: 2px; }
+  .summary-body { padding: 24px 28px; }
+  .summary-all-clear {
+    display: flex; align-items: center; gap: 12px;
+    padding: 20px;
+    background: var(--green-dim);
+    border: 1px solid rgba(34,211,160,0.2);
+    border-radius: var(--r2);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .summary-items { display: flex; flex-direction: column; gap: 10px; }
+  .summary-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 16px;
+    border-radius: var(--r2);
+    border: 1px solid var(--border);
+    background: var(--bg2);
+    transition: border-color 0.2s;
+  }
+  .summary-item:hover { border-color: var(--border2); }
+  .summary-item-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .summary-item.warn .summary-item-dot { background: var(--yellow); box-shadow: 0 0 6px rgba(245,197,66,0.5); }
+  .summary-item.bad  .summary-item-dot { background: var(--red);    box-shadow: 0 0 6px rgba(255,92,92,0.5); }
+  .summary-item-name {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+    flex-shrink: 0;
+    width: 180px;
+  }
+  .summary-item-reading {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text3);
+    margin-bottom: 3px;
+  }
+  .summary-item-action {
+    font-size: 13px;
+    color: var(--text2);
+    flex: 1;
+  }
+  .summary-dose-pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid rgba(0,200,204,0.2);
+    border-radius: 50px;
+    padding: 4px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: 12px;
+    color: var(--text3);
+    line-height: 1.8;
+  }
+  footer a { color: var(--teal); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .page-wrap { padding: 0 16px 60px; }
+    .calculators-grid { grid-template-columns: 1fr; }
+    .volume-section { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .header-inner { flex-direction: column; align-items: flex-start; }
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  select option { background: #0d2840; color: var(--text); }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+  input[type=number] { -moz-appearance: textfield; }
+
+  .wave-sep {
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--teal-dim), var(--teal), var(--teal-dim), transparent);
+    margin: 32px 0;
+    border: none;
+  }
+
+  .inline-flex { display: flex; align-items: center; gap: 8px; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <div class="logo-eyebrow">Professional Water Chemistry — Zawar Shah</div>
+        <h1>A&amp;<span>Z</span> Pool Services</h1>
+        <div class="tagline">Real-time pool chemical dosing calculator for technicians &amp; homeowners</div>
+      </div>
+      <div class="unit-toggle">
+        <button id="btn-litres" class="active" onclick="setUnit('litres')">Litres</button>
+        <button id="btn-gallons" onclick="setUnit('gallons')">US Gallons</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pool Volume -->
+  <div class="volume-section" id="vol-section">
+    <div class="vol-label">Pool Volume</div>
+    <div class="vol-input-wrap">
+      <input type="number" class="big-input" id="pool-volume" placeholder="50000" min="0" oninput="recalcAll()" />
+      <span class="unit-badge" id="vol-unit-badge">Litres</span>
+    </div>
+    <div class="vol-hint">
+      <strong>Not sure of your pool volume?</strong><br>
+      Rectangle: L × W × Avg. Depth × 1000 (for litres)<br>
+      Round: Diameter² × 0.785 × Depth × 1000
+    </div>
+  </div>
+
+  <!-- Calculators Grid -->
+  <div class="section-label">Parameters &amp; Dosing Calculators</div>
+  <div class="calculators-grid" id="calc-grid">
+
+    <!-- ① pH -->
+    <div class="calc-card" id="card-ph">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              pH Level
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">pH is the master variable of pool chemistry. Low pH (acidic) corrodes equipment, irritates eyes and skin, and destroys chlorine effectiveness. High pH (basic) causes cloudy water, scale deposits, and dramatically reduces chlorine sanitisation. Target: exactly 7.2. Formula: (difference from 7.2) × 30 × (pool size in thousands of litres).</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Acidity / Alkalinity</div>
+          </div>
+          <div class="status-dot" id="dot-ph"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Target</span>
+          <span class="ideal-val">7.2 &nbsp;(exact target)</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current pH</label>
+            <input type="number" class="param-input" id="val-ph" placeholder="7.8" step="0.1" min="0" max="14" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-ph" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-ph">
+          <div class="result-empty">Enter your current pH and pool volume to see dosing advice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② Free Chlorine -->
+    <div class="calc-card" id="card-cl">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Free Chlorine
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Free chlorine is your primary sanitiser, killing bacteria, algae, and pathogens. Ideal range: 2–4 ppm. If above 4, production is reduced proportionally. Example: if chlorine is 8 (double the max of 4) and production is at 4 hrs, reduce to 2 hrs. Below 2 ppm, dose up to the midpoint of 3 ppm.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Sanitiser Level (ppm)</div>
+          </div>
+          <div class="status-dot" id="dot-cl"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Ideal Range</span>
+          <span class="ideal-val">2.0 – 4.0 ppm</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current FC (ppm)</label>
+            <input type="number" class="param-input" id="val-cl" placeholder="2.5" step="0.1" min="0" oninput="recalcAll()">
+          </div>
+          <div class="input-group">
+            <label>Chlorine Type</label>
+            <select class="select-input" id="sel-cl" onchange="recalcAll()">
+              <option value="liquid">Liquid (12.5%)</option>
+              <option value="gran65">Granular (65%)</option>
+              <option value="gran70">Granular (70%)</option>
+              <option value="trichlor">Trichlor (90%)</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-row" id="row-cl-production">
+          <div class="input-group">
+            <label>Production Hours/day (SWC)</label>
+            <input type="number" class="param-input" id="val-cl-hrs" placeholder="8" step="0.5" min="0" max="24" oninput="recalcAll()">
+          </div>
+          <div class="input-group">
+            <label>Output % (SWC)</label>
+            <input type="number" class="param-input" id="val-cl-pct" placeholder="50" step="1" min="0" max="100" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-cl" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-cl">
+          <div class="result-empty">Enter your current free chlorine and pool volume to see dosing advice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ Total Alkalinity -->
+    <div class="calc-card" id="card-ta">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Total Alkalinity
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Total Alkalinity (TA) buffers your pH against rapid swings. Target: 120 ppm (acceptable range 80–120). Formula: (120 − TA) × 15 × (pool size ÷ 10,000). Example: TA is 80, pool is 40,000 L → 40 × 15 × 4 = 2,400 g (2.4 kg) of sodium bicarbonate.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Buffer (ppm)</div>
+          </div>
+          <div class="status-dot" id="dot-ta"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Target</span>
+          <span class="ideal-val">120 ppm &nbsp;(range 80 – 120)</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current TA (ppm)</label>
+            <input type="number" class="param-input" id="val-ta" placeholder="60" step="1" min="0" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-ta" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-ta">
+          <div class="result-empty">Enter your current Total Alkalinity and pool volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ Cyanuric Acid / Stabiliser -->
+    <div class="calc-card" id="card-cya">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Stabiliser (CYA)
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Cyanuric Acid (CYA) protects chlorine from UV sunlight. Ideal range: 30–50 ppm. For pools ≤30,000L: below 25 (but above 13) add 0.5 kg; below 13 add 1 kg. For pools >30,000L: if below 30, add 1 kg regardless of how far below. Reduction only possible via dilution (partial drain).</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Stabiliser / Conditioner (ppm)</div>
+          </div>
+          <div class="status-dot" id="dot-cya"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Ideal Range</span>
+          <span class="ideal-val">30 – 50 ppm (outdoor)</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current CYA (ppm)</label>
+            <input type="number" class="param-input" id="val-cya" placeholder="20" step="1" min="0" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-cya" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-cya">
+          <div class="result-empty">Enter your current Stabiliser level and pool volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ Calcium Hardness -->
+    <div class="calc-card" id="card-ch">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Calcium Hardness
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Calcium Hardness (CH) measures dissolved calcium. Low CH makes water aggressive — it leaches calcium from plaster and grout. High CH causes scale. Ideal: 200–400 ppm. Reduce only by dilution.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Dissolved Calcium (ppm)</div>
+          </div>
+          <div class="status-dot" id="dot-ch"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Ideal Range</span>
+          <span class="ideal-val">200 – 400 ppm</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current CH (ppm)</label>
+            <input type="number" class="param-input" id="val-ch" placeholder="120" step="5" min="0" oninput="recalcAll()">
+          </div>
+          <div class="input-group">
+            <label>Product Type</label>
+            <select class="select-input" id="sel-ch" onchange="recalcAll()">
+              <option value="77">CaCl₂ Flake (77%)</option>
+              <option value="100">Anhydrous (96–100%)</option>
+            </select>
+          </div>
+        </div>
+        <div id="badge-ch" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-ch">
+          <div class="result-empty">Enter your current Calcium Hardness and pool volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ Phosphates -->
+    <div class="calc-card" id="card-phos">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Phosphates
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Phosphates fuel algae growth. If the reading is 500 ppb or above, add 100 mL of phosphate remover. Below 500 ppb, no treatment is required unless algae is persistent. Target: below 200 ppb.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Algae Food (ppb)</div>
+          </div>
+          <div class="status-dot" id="dot-phos"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Action Threshold</span>
+          <span class="ideal-val">500 ppb → 100 mL remover</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current Phosphate (ppb)</label>
+            <input type="number" class="param-input" id="val-phos" placeholder="800" step="50" min="0" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-phos" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-phos">
+          <div class="result-empty">Enter your current phosphate level and pool volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑦ Clarifier -->
+    <div class="calc-card" id="card-clar">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Clarifier
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Clarifier is a coagulant (typically polyquat or aluminium sulphate) that binds fine suspended particles together so the filter can capture them. Use weekly for maintenance or after heavy bather loads, storms, or algae treatments. Do not overdose — excess clarifier can cloud the water further.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Coagulant Dose</div>
+          </div>
+          <div class="status-dot" id="dot-clar"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Dose Type</span>
+          <span class="ideal-val">Maintenance or Shock</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Turbidity / Purpose</label>
+            <select class="select-input" id="sel-clar" onchange="recalcAll()">
+              <option value="maintenance">Weekly Maintenance</option>
+              <option value="dull">Dull / Slightly Cloudy</option>
+              <option value="cloudy">Moderately Cloudy</option>
+              <option value="heavy">Very Cloudy / Shock</option>
+            </select>
+          </div>
+        </div>
+        <div id="badge-clar" class="status-badge">— Select dose type</div>
+        <div class="result-box" id="result-clar">
+          <div class="result-empty">Select turbidity level and enter pool volume to calculate clarifier dose.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑧ Salt -->
+    <div class="calc-card" id="card-salt">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-title-block">
+            <div class="card-title inline-flex">
+              Salt Level
+              <div class="tooltip-wrap">
+                <div class="tooltip-icon">?</div>
+                <div class="tooltip-box">Target salt level: 4,000 ppm. For every 1,000 units below 4,000, add one 20 kg salt bag per 20,000 L of pool water. Example: reading is 3,000 (1,000 short) with a 20,000 L pool → 1 bag. A 40,000 L pool → 2 bags. Use pool-grade NaCl (99%+ pure) only.</div>
+              </div>
+            </div>
+            <div class="card-subtitle">Saltwater Pools (ppm)</div>
+          </div>
+          <div class="status-dot" id="dot-salt"></div>
+        </div>
+        <div class="ideal-range-bar">
+          <span class="ideal-label">Target</span>
+          <span class="ideal-val">4,000 ppm</span>
+        </div>
+        <div class="input-row">
+          <div class="input-group">
+            <label>Current Salt (ppm)</label>
+            <input type="number" class="param-input" id="val-salt" placeholder="3000" step="50" min="0" oninput="recalcAll()">
+          </div>
+        </div>
+        <div id="badge-salt" class="status-badge">— Enter a reading</div>
+        <div class="result-box" id="result-salt">
+          <div class="result-empty">Enter your current salt level and pool volume.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /calc-grid -->
+
+  <hr class="wave-sep">
+
+  <!-- Summary Panel -->
+  <div class="section-label">Treatment Summary</div>
+  <div class="summary-panel">
+    <div class="summary-header">
+      <div class="summary-icon">📋</div>
+      <div>
+        <div class="summary-title">Out-of-Range Parameters</div>
+        <div class="summary-subtitle">All parameters requiring attention — update any calculator above to refresh</div>
+      </div>
+    </div>
+    <div class="summary-body">
+      <div id="summary-content">
+        <div class="result-empty" style="padding: 12px 0;">Enter your pool volume and parameter readings above to generate a treatment summary.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p><strong>A&amp;Z Pool Services</strong> — Pool Water Chemistry Calculator</p>
+    <p>Owned and operated by <strong>Zawar Shah</strong></p>
+    <p>Dosing calculations are based on industry-standard formulas and are provided as a <em>guide only</em>.<br>
+    Always read product labels. Retest water after each treatment. Consult a licensed pool technician for complex issues.</p>
+    <p style="margin-top:8px">Formulas: pH per A&amp;Z dosing tables; Alkalinity per PHTA Australia guidelines; Salt per manufacturer cell requirements.</p>
+  </footer>
+
+</div><!-- /page-wrap -->
+
+<script>
+// ══════════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════════
+let unitMode = 'litres'; // 'litres' | 'gallons'
+
+function getVolLitres() {
+  const raw = parseFloat(document.getElementById('pool-volume').value);
+  if (isNaN(raw) || raw <= 0) return null;
+  return unitMode === 'gallons' ? raw * 3.78541 : raw;
+}
+
+function setUnit(u) {
+  unitMode = u;
+  document.getElementById('btn-litres').classList.toggle('active', u === 'litres');
+  document.getElementById('btn-gallons').classList.toggle('active', u === 'gallons');
+  document.getElementById('vol-unit-badge').textContent = u === 'litres' ? 'Litres' : 'US Gallons';
+  recalcAll();
+}
+
+// ══════════════════════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════════════════════
+function setCardStatus(id, status) {
+  const card = document.getElementById(id);
+  card.className = 'calc-card' + (status ? ' status-' + status : '');
+}
+
+function setBadge(id, status, text) {
+  const el = document.getElementById(id);
+  el.className = 'status-badge' + (status ? ' ' + status : '');
+  el.textContent = text;
+}
+
+function setResult(id, html) {
+  const el = document.getElementById(id);
+  el.innerHTML = html;
+  el.classList.toggle('active', html && !html.includes('result-empty'));
+}
+
+function doseHTML(action, qty, unit, note='') {
+  return `<div class="result-action">${action}</div>
+<div class="result-dose"><span class="dose-num">${qty}</span><span class="dose-unit">${unit}</span></div>
+${note ? `<div class="result-note">${note}</div>` : ''}`;
+}
+
+function goodHTML(msg) {
+  return `<div class="result-good">✓ ${msg}</div>`;
+}
+
+function noVolHTML() {
+  return `<div class="result-empty">⚠ Enter pool volume above to calculate dose.</div>`;
+}
+
+// ══════════════════════════════════════════════════════
+//  SUMMARY
+// ══════════════════════════════════════════════════════
+const summaryItems = {};
+
+function updateSummary() {
+  const el = document.getElementById('summary-content');
+  const issues = Object.values(summaryItems).filter(x => x);
+  if (!issues.length) {
+    el.innerHTML = `<div class="summary-all-clear">
+      <span style="font-size:22px">🎉</span>
+      <span>All parameters are within their ideal ranges — your pool water is balanced!</span>
+    </div>`;
+  } else {
+    el.innerHTML = `<div class="summary-items">${issues.map(i => `
+      <div class="summary-item ${i.severity}">
+        <div class="summary-item-dot"></div>
+        <div style="flex:1">
+          <div class="summary-item-name">${i.name}</div>
+          <div class="summary-item-reading">${i.reading}</div>
+          <div class="summary-item-action">${i.action}</div>
+        </div>
+        ${i.dose ? `<div class="summary-dose-pill">${i.dose}</div>` : ''}
+      </div>`).join('')}
+    </div>`;
+  }
+}
+
+function setSummary(key, data) {
+  summaryItems[key] = data;
+  updateSummary();
+}
+
+// ══════════════════════════════════════════════════════
+//  ① pH — target exactly 7.2
+//  Formula: (difference from 7.2) × 30 × (pool size in thousands of litres)
+// ══════════════════════════════════════════════════════
+function calcPH() {
+  const pH = parseFloat(document.getElementById('val-ph').value);
+  const vol = getVolLitres();
+
+  if (isNaN(pH)) {
+    setCardStatus('card-ph', '');
+    setBadge('badge-ph', '', '— Enter a reading');
+    setResult('result-ph', '<div class="result-empty">Enter your current pH and pool volume.</div>');
+    setSummary('ph', null);
+    return;
+  }
+
+  const TARGET_PH = 7.2;
+  const diff = Math.abs(pH - TARGET_PH);
+
+  let status, badgeText;
+  if (Math.abs(pH - TARGET_PH) < 0.05) { status = 'good'; badgeText = '✓ At Target (7.2)'; }
+  else if (pH > TARGET_PH && pH <= 7.6) { status = 'warn'; badgeText = '↑ Above Target'; }
+  else if (pH < TARGET_PH && pH >= 7.0) { status = 'warn'; badgeText = '↓ Below Target'; }
+  else if (pH > 7.6)                    { status = 'bad';  badgeText = '↑↑ Too High'; }
+  else                                  { status = 'bad';  badgeText = '↓↓ Dangerously Low'; }
+
+  setCardStatus('card-ph', status);
+  setBadge('badge-ph', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-ph', goodHTML(`pH ${pH.toFixed(1)} is at the target of 7.2. No adjustment needed.`));
+    setSummary('ph', null);
+    return;
+  }
+
+  if (!vol) { setResult('result-ph', noVolHTML()); setSummary('ph', null); return; }
+
+  // Formula: difference × 30 × (pool size in thousands of litres)
+  const poolKL = vol / 1000;
+  const delta = parseFloat((Math.abs(pH - TARGET_PH)).toFixed(2));
+  const dose = delta * 30 * poolKL;
+
+  if (pH > TARGET_PH) {
+    const doseStr = dose >= 1000 ? (dose/1000).toFixed(2) + ' L' : dose.toFixed(0) + ' mL';
+    setResult('result-ph', doseHTML(
+      `Add <strong>muriatic acid (33%)</strong> to lower pH from ${pH.toFixed(2)} → 7.2`,
+      doseStr, '',
+      `Add acid with pump running into the deepest area. Wait 1–2 hrs, then retest.`
+    ));
+    setSummary('ph', { name: 'pH', severity: status, reading: `Current: ${pH.toFixed(2)} — Target: 7.2`, action: 'Add muriatic acid (33%) to lower pH', dose: doseStr });
+  } else {
+    const doseStr = dose >= 1000 ? (dose/1000).toFixed(2) + ' kg' : dose.toFixed(0) + ' g';
+    setResult('result-ph', doseHTML(
+      `Add <strong>soda ash (sodium carbonate)</strong> to raise pH from ${pH.toFixed(2)} → 7.2`,
+      doseStr, '',
+      `Pre-dissolve in a bucket of pool water. Add in front of return jets. Wait 2 hrs, then retest.`
+    ));
+    setSummary('ph', { name: 'pH', severity: status, reading: `Current: ${pH.toFixed(2)} — Target: 7.2`, action: 'Add soda ash (sodium carbonate) to raise pH', dose: doseStr });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  ② Free Chlorine — ideal 2–4 ppm
+//  If above 4: reduce production proportionally
+//  If below 2: dose up to 3 ppm
+// ══════════════════════════════════════════════════════
+function calcCL() {
+  const fc = parseFloat(document.getElementById('val-cl').value);
+  const type = document.getElementById('sel-cl').value;
+  const currentHrs = parseFloat(document.getElementById('val-cl-hrs').value);
+  const vol = getVolLitres();
+
+  if (isNaN(fc)) {
+    setCardStatus('card-cl', ''); setBadge('badge-cl', '', '— Enter a reading');
+    setResult('result-cl', '<div class="result-empty">Enter your current free chlorine and pool volume.</div>');
+    setSummary('cl', null); return;
+  }
+
+  let status, badgeText;
+  if (fc >= 2 && fc <= 4)        { status = 'good'; badgeText = '✓ Ideal Range (2–4 ppm)'; }
+  else if (fc >= 1 && fc < 2)    { status = 'warn'; badgeText = '↓ Below Ideal'; }
+  else if (fc > 4 && fc <= 6)    { status = 'warn'; badgeText = '↑ Above Ideal — Reduce'; }
+  else if (fc < 1)               { status = 'bad';  badgeText = '↓↓ Critically Low'; }
+  else                           { status = 'bad';  badgeText = '↑↑ Too High — Reduce Urgently'; }
+
+  setCardStatus('card-cl', status);
+  setBadge('badge-cl', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-cl', goodHTML(`Free chlorine ${fc.toFixed(1)} ppm is within the ideal 2–4 ppm range.`));
+    setSummary('cl', null); return;
+  }
+
+  // ── ABOVE 4: proportional production reduction ──
+  if (fc > 4) {
+    // Reduction ratio: idealMax / current = 4 / fc
+    const ratio = 4 / fc;
+    let reductionMsg = '';
+
+    if (!isNaN(currentHrs) && currentHrs > 0) {
+      const newHrs = (currentHrs * ratio).toFixed(1);
+      reductionMsg = `Based on your current production of <strong>${currentHrs} hrs/day</strong>, reduce to <strong>${newHrs} hrs/day</strong>.`;
+    } else {
+      const pctReduction = Math.round((1 - ratio) * 100);
+      reductionMsg = `Reduce chlorinator production by <strong>${pctReduction}%</strong>.`;
+    }
+
+    setResult('result-cl', `<div class="result-action">⬇ Chlorine is above 4 ppm — reduce production proportionally:</div>
+<div class="result-note" style="font-size:13px;color:var(--yellow);margin-top:6px">${reductionMsg}</div>
+<div class="result-note">Allow natural dissipation. Do not swim until FC drops to ≤4 ppm. Re-test in 12–24 hours.</div>`);
+    setSummary('cl', { name: 'Free Chlorine', severity: status, reading: `Current: ${fc.toFixed(1)} ppm — Ideal: 2–4 ppm`, action: `Reduce chlorinator production`, dose: null });
+    return;
+  }
+
+  // ── BELOW 2: dose up to target 3 ppm ──
+  if (!vol) { setResult('result-cl', noVolHTML()); setSummary('cl', null); return; }
+
+  const target = 3.0;
+  const delta = target - fc;
+
+  // Dose per ppm per 10,000L
+  const perPpmPer10k = { liquid: 80, gran65: 15.4, gran70: 14.3, trichlor: 11.1 };
+  const rate = perPpmPer10k[type];
+  const factor = (vol / 10000) * delta * rate;
+
+  let doseStr, unitLabel, prodName, note;
+  if (type === 'liquid') {
+    doseStr = factor >= 1000 ? (factor/1000).toFixed(2) : factor.toFixed(0);
+    unitLabel = factor >= 1000 ? 'L liquid chlorine (12.5%)' : 'mL liquid chlorine (12.5%)';
+    prodName = 'Liquid Chlorine (12.5% NaOCl)';
+    note = 'Pour slowly around the perimeter of the pool with pump running. Never mix chemicals.';
+  } else {
+    doseStr = factor >= 1000 ? (factor/1000).toFixed(2) : factor.toFixed(0);
+    unitLabel = factor >= 1000 ? 'kg granular chlorine' : 'g granular chlorine';
+    prodName = type === 'trichlor' ? 'Trichlor (90%)' : `Granular Chlorine (${type === 'gran65' ? '65%' : '70%'})`;
+    note = 'Pre-dissolve in a bucket of water before adding to pool. Never add directly to skimmer.';
+  }
+
+  setResult('result-cl', doseHTML(
+    `Add <strong>${prodName}</strong> to raise FC from ${fc.toFixed(1)} → 3.0 ppm`,
+    doseStr, unitLabel, note
+  ));
+  setSummary('cl', { name: 'Free Chlorine', severity: status, reading: `Current: ${fc.toFixed(1)} ppm — Target: 3.0 ppm`, action: `Add ${prodName}`, dose: doseStr + ' ' + unitLabel });
+}
+
+// ══════════════════════════════════════════════════════
+//  ③ Total Alkalinity — target 120 ppm (range 80–120)
+//  Formula: (difference from 120) × 15 × (pool kL)
+// ══════════════════════════════════════════════════════
+function calcTA() {
+  const ta = parseFloat(document.getElementById('val-ta').value);
+  const vol = getVolLitres();
+
+  if (isNaN(ta)) {
+    setCardStatus('card-ta', ''); setBadge('badge-ta', '', '— Enter a reading');
+    setResult('result-ta', '<div class="result-empty">Enter your current Total Alkalinity and pool volume.</div>');
+    setSummary('ta', null); return;
+  }
+
+  let status, badgeText;
+  if (ta >= 80 && ta <= 120)     { status = 'good'; badgeText = '✓ Ideal Buffer'; }
+  else if (ta >= 60 && ta < 80)  { status = 'warn'; badgeText = '↓ Low Buffer'; }
+  else if (ta > 120 && ta <= 150){ status = 'warn'; badgeText = '↑ Slightly High'; }
+  else                           { status = 'bad';  badgeText = ta < 60 ? '↓↓ Very Low' : '↑↑ Too High'; }
+
+  setCardStatus('card-ta', status);
+  setBadge('badge-ta', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-ta', goodHTML(`Total Alkalinity ${ta.toFixed(0)} ppm is within the 80–120 ppm range.`));
+    setSummary('ta', null); return;
+  }
+
+  if (!vol) { setResult('result-ta', noVolHTML()); setSummary('ta', null); return; }
+
+  const TARGET_TA = 120;
+  const poolFactor = vol / 10000; // 40,000L → 4, 75,000L → 7.5
+
+  if (ta < TARGET_TA) {
+    // Formula: (120 − TA) × 15 × (pool size / 10,000)
+    const delta = TARGET_TA - ta;
+    const grams = delta * 15 * poolFactor;
+    const gStr = grams >= 1000 ? (grams/1000).toFixed(2) + ' kg' : grams.toFixed(0) + ' g';
+    setResult('result-ta', doseHTML(
+      `Add <strong>sodium bicarbonate (baking soda)</strong> to raise TA from ${ta.toFixed(0)} → 120 ppm`,
+      gStr, '',
+      `Pre-dissolve in warm water, pour in front of return jets. Retest after 6 hours of circulation.`
+    ));
+    setSummary('ta', { name: 'Total Alkalinity', severity: status, reading: `Current: ${ta.toFixed(0)} ppm — Target: 120 ppm`, action: 'Add sodium bicarbonate (baking soda)', dose: gStr });
+  } else {
+    // Lower with muriatic acid: 100mL lowers ~10 ppm per 10,000L
+    const delta = ta - TARGET_TA;
+    const ml = (delta / 10) * (vol / 10000) * 100;
+    const mlStr = ml >= 1000 ? (ml/1000).toFixed(2) + ' L' : ml.toFixed(0) + ' mL';
+    setResult('result-ta', doseHTML(
+      `Add <strong>muriatic acid (33%)</strong> to lower TA from ${ta.toFixed(0)} → 120 ppm`,
+      mlStr, 'muriatic acid (33%)',
+      'Turn off the pump. Add acid slowly to the deep end. Wait 1 hour, then turn pump back on. Repeat over multiple days for large reductions.'
+    ));
+    setSummary('ta', { name: 'Total Alkalinity', severity: status, reading: `Current: ${ta.toFixed(0)} ppm — Target: 120 ppm`, action: 'Add muriatic acid to lower TA', dose: mlStr });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  ④ Stabiliser (CYA) — A&Z fixed-dose logic
+//  Pool ≤ 30,000L:
+//    below 25 but above 13 → add 0.5 kg
+//    below 13              → add 1 kg
+//  Pool > 30,000L:
+//    below 30              → add 1 kg
+// ══════════════════════════════════════════════════════
+function calcCYA() {
+  const cya = parseFloat(document.getElementById('val-cya').value);
+  const vol = getVolLitres();
+
+  if (isNaN(cya)) {
+    setCardStatus('card-cya', ''); setBadge('badge-cya', '', '— Enter a reading');
+    setResult('result-cya', '<div class="result-empty">Enter your current Stabiliser level and pool volume.</div>');
+    setSummary('cya', null); return;
+  }
+
+  let status, badgeText;
+  if (cya >= 30 && cya <= 50)    { status = 'good'; badgeText = '✓ Ideal Stabiliser'; }
+  else if (cya >= 25 && cya < 30){ status = 'warn'; badgeText = '↓ Low — Chlorine Vulnerable'; }
+  else if (cya > 50 && cya <= 75){ status = 'warn'; badgeText = '↑ Elevated'; }
+  else if (cya < 25)             { status = 'bad';  badgeText = '↓↓ Very Low / Unprotected'; }
+  else                           { status = 'bad';  badgeText = '↑↑ Chlorine Lock Risk'; }
+
+  setCardStatus('card-cya', status);
+  setBadge('badge-cya', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-cya', goodHTML(`CYA ${cya.toFixed(0)} ppm is within the 30–50 ppm ideal range.`));
+    setSummary('cya', null); return;
+  }
+
+  if (!vol) { setResult('result-cya', noVolHTML()); setSummary('cya', null); return; }
+
+  if (cya < 30) {
+    // ── A&Z fixed-dose logic ──
+    let addKg = 0;
+    let logicNote = '';
+
+    if (vol <= 30000) {
+      // Small pool (≤ 30,000 L)
+      if (cya > 13 && cya < 25) {
+        addKg = 0.5;
+        logicNote = `Pool ≤ 30,000 L and CYA between 13–25: add 0.5 kg.`;
+      } else if (cya <= 13) {
+        addKg = 1.0;
+        logicNote = `Pool ≤ 30,000 L and CYA below 13: add 1 kg.`;
+      } else {
+        // 25–29 range — borderline warn for small pool
+        addKg = 0.5;
+        logicNote = `Pool ≤ 30,000 L and CYA slightly below 30: add 0.5 kg as a precaution.`;
+      }
+    } else {
+      // Large pool (> 30,000 L)
+      addKg = 1.0;
+      logicNote = `Pool > 30,000 L and CYA below 30: add 1 kg regardless of how far below.`;
+    }
+
+    setResult('result-cya', doseHTML(
+      `Add <strong>cyanuric acid (stabiliser)</strong> to raise CYA from ${cya.toFixed(0)} ppm`,
+      addKg === 0.5 ? '500 g' : '1 kg', 'cyanuric acid',
+      `Pre-dissolve in warm water or add directly in front of return jets. Allow 24–48 hours for full dispersion before retesting.`
+    ));
+    setSummary('cya', { name: 'Stabiliser (CYA)', severity: status, reading: `Current: ${cya.toFixed(0)} ppm — Target: 30–50 ppm`, action: 'Add cyanuric acid stabiliser', dose: addKg === 0.5 ? '500 g' : '1 kg' });
+  } else {
+    // Reduction by dilution only
+    const dilutePct = Math.round(((cya - 40) / cya) * 100);
+    const drainVol = Math.round(vol * dilutePct / 100);
+    const dStr = drainVol >= 1000 ? (drainVol/1000).toFixed(1) + (unitMode==='gallons'?' k gal':' kL') : drainVol + (unitMode==='gallons'?' gal':' L');
+    setResult('result-cya', `<div class="result-action">CYA can <strong>only be reduced by dilution</strong> (draining & refilling):</div>
+<div class="result-dilute">Drain approximately <strong>${dilutePct}%</strong> of pool water (~${dStr}) and refill with fresh water to bring CYA down to ~40 ppm.</div>
+<div class="result-note">At CYA above 75 ppm, chlorine effectiveness is severely impaired. Perform dilution before increasing chlorine levels.</div>`);
+    setSummary('cya', { name: 'Stabiliser (CYA)', severity: status, reading: `Current: ${cya.toFixed(0)} ppm — Target: 40 ppm`, action: `Drain & refill ~${dilutePct}% of pool volume (~${dStr})`, dose: null });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  ⑤ Calcium Hardness
+// ══════════════════════════════════════════════════════
+function calcCH() {
+  const ch = parseFloat(document.getElementById('val-ch').value);
+  const purity = parseFloat(document.getElementById('sel-ch').value);
+  const vol = getVolLitres();
+
+  if (isNaN(ch)) {
+    setCardStatus('card-ch', ''); setBadge('badge-ch', '', '— Enter a reading');
+    setResult('result-ch', '<div class="result-empty">Enter your current Calcium Hardness and pool volume.</div>');
+    setSummary('ch', null); return;
+  }
+
+  let status, badgeText;
+  if (ch >= 200 && ch <= 400)    { status = 'good'; badgeText = '✓ Ideal Hardness'; }
+  else if (ch >= 150 && ch < 200){ status = 'warn'; badgeText = '↓ Slightly Soft'; }
+  else if (ch > 400 && ch <= 500){ status = 'warn'; badgeText = '↑ Slightly Hard'; }
+  else                           { status = 'bad';  badgeText = ch < 150 ? '↓↓ Aggressive Water' : '↑↑ Scale Risk'; }
+
+  setCardStatus('card-ch', status);
+  setBadge('badge-ch', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-ch', goodHTML(`Calcium Hardness ${ch.toFixed(0)} ppm is within the 200–400 ppm range.`));
+    setSummary('ch', null); return;
+  }
+
+  if (!vol) { setResult('result-ch', noVolHTML()); setSummary('ch', null); return; }
+
+  if (ch < 200) {
+    const ratePerPpmPer10k = purity === 77 ? 14.4 : 11.5;
+    const delta = 300 - ch;
+    const grams = delta * (vol / 10000) * ratePerPpmPer10k;
+    const gStr = grams >= 1000 ? (grams/1000).toFixed(2) + ' kg' : grams.toFixed(0) + ' g';
+    const prodName = purity === 77 ? 'Calcium Chloride Flake (77%)' : 'Calcium Chloride Anhydrous';
+    setResult('result-ch', doseHTML(
+      `Add <strong>${prodName}</strong> to raise CH from ${ch.toFixed(0)} → 300 ppm`,
+      gStr, '',
+      '⚠ EXOTHERMIC: Always pre-dissolve in a bucket of water — the reaction generates significant heat. Never add dry product directly. Add solution slowly around pool perimeter.'
+    ));
+    setSummary('ch', { name: 'Calcium Hardness', severity: status, reading: `Current: ${ch.toFixed(0)} ppm — Target: 300 ppm`, action: `Add ${prodName} (pre-dissolve first)`, dose: gStr });
+  } else {
+    const dilutePct = Math.round(((ch - 300) / ch) * 100);
+    const drainVol = Math.round(vol * dilutePct / 100);
+    const dStr = drainVol >= 1000 ? (drainVol/1000).toFixed(1) + (unitMode==='gallons'?' k gal':' kL') : drainVol + (unitMode==='gallons'?' gal':' L');
+    setResult('result-ch', `<div class="result-action">Calcium Hardness can <strong>only be reduced by dilution</strong>:</div>
+<div class="result-dilute">Drain approximately <strong>${dilutePct}%</strong> of pool (~${dStr}) and refill with fresh (softer) water to bring CH down to ~300 ppm.</div>
+<div class="result-note">Alternatively, a sequestering agent can temporarily prevent scale formation while you manage dilution.</div>`);
+    setSummary('ch', { name: 'Calcium Hardness', severity: status, reading: `Current: ${ch.toFixed(0)} ppm — Target: 300 ppm`, action: `Drain & refill ~${dilutePct}% of pool volume (~${dStr})`, dose: null });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  ⑥ Phosphates — A&Z logic
+//  500 ppb or above → add 100 mL phosphate remover
+//  Below 500 ppb → no treatment needed
+// ══════════════════════════════════════════════════════
+function calcPhos() {
+  const phos = parseFloat(document.getElementById('val-phos').value);
+  const vol = getVolLitres();
+
+  if (isNaN(phos)) {
+    setCardStatus('card-phos', ''); setBadge('badge-phos', '', '— Enter a reading');
+    setResult('result-phos', '<div class="result-empty">Enter your current phosphate level and pool volume.</div>');
+    setSummary('phos', null); return;
+  }
+
+  let status, badgeText;
+  if (phos < 200)              { status = 'good'; badgeText = '✓ Low Phosphate'; }
+  else if (phos < 500)         { status = 'warn'; badgeText = '↑ Elevated — Monitor'; }
+  else                         { status = 'bad';  badgeText = '↑↑ High — Treat with 100 mL'; }
+
+  setCardStatus('card-phos', status);
+  setBadge('badge-phos', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-phos', goodHTML(`Phosphates ${phos.toFixed(0)} ppb are below the 200 ppb threshold. No treatment needed.`));
+    setSummary('phos', null); return;
+  }
+
+  if (phos >= 200 && phos < 500) {
+    // Warn but no dose required per A&Z logic
+    setResult('result-phos', `<div class="result-action">⚠ Phosphates are elevated (200–499 ppb) — <strong>monitor closely</strong>.</div>
+<div class="result-note">No treatment required yet. If phosphates reach 500 ppb or above, add 100 mL of phosphate remover. Continue monitoring and check for nutrient sources (leaves, fertiliser runoff, swimmer waste).</div>`);
+    setSummary('phos', { name: 'Phosphates', severity: 'warn', reading: `Current: ${phos.toFixed(0)} ppb — Action threshold: 500 ppb`, action: 'Monitor — no treatment needed until ≥500 ppb', dose: null });
+    return;
+  }
+
+  // ≥ 500 ppb: add flat 100 mL phosphate remover
+  if (!vol) { setResult('result-phos', noVolHTML()); setSummary('phos', null); return; }
+
+  setResult('result-phos', doseHTML(
+    `Add <strong>phosphate remover (lanthanum-based)</strong> — reading is ${phos.toFixed(0)} ppb (≥500 ppb threshold)`,
+    '100', 'mL phosphate remover',
+    'Add slowly in front of return jets with pump running. Water may cloud temporarily (lanthanum binding to phosphate). Run filter for 24 hrs and backwash afterwards. Retest to confirm reduction below 500 ppb.'
+  ));
+  setSummary('phos', { name: 'Phosphates', severity: status, reading: `Current: ${phos.toFixed(0)} ppb — Threshold: 500 ppb`, action: 'Add 100 mL phosphate remover (lanthanum-based)', dose: '100 mL' });
+}
+
+// ══════════════════════════════════════════════════════
+//  ⑦ Clarifier
+// ══════════════════════════════════════════════════════
+function calcClar() {
+  const sel = document.getElementById('sel-clar').value;
+  const vol = getVolLitres();
+
+  const doseMap = { maintenance: 30, dull: 45, cloudy: 60, heavy: 100 };
+  const labelMap = {
+    maintenance: 'Weekly Maintenance',
+    dull: 'Dull / Slightly Cloudy',
+    cloudy: 'Moderately Cloudy',
+    heavy: 'Very Cloudy / Shock Treatment'
+  };
+  const noteMap = {
+    maintenance: 'Add weekly with pump running for continued water clarity.',
+    dull: 'Add and run filter for 24 hours. Backwash or clean filter if water does not clear within 48 hours.',
+    cloudy: 'Add in front of return jets with pump running continuously. Do not over-dose — if water worsens, perform a partial drain.',
+    heavy: 'For heavy use: consider also shocking with chlorine. Run filter 24/7 and backwash every 8 hours until clear.'
+  };
+
+  setCardStatus('card-clar', 'good');
+  setBadge('badge-clar', 'good', `✓ ${labelMap[sel]}`);
+
+  if (!vol) { setResult('result-clar', noVolHTML()); setSummary('clar', null); return; }
+
+  const mlPer10k = doseMap[sel];
+  const ml = (vol / 10000) * mlPer10k;
+  const mlStr = ml >= 1000 ? (ml/1000).toFixed(2) + ' L' : ml.toFixed(0) + ' mL';
+
+  setResult('result-clar', doseHTML(
+    `<strong>Clarifier</strong> dose for ${labelMap[sel].toLowerCase()}`,
+    mlStr, 'clarifier',
+    noteMap[sel]
+  ));
+  setSummary('clar', null);
+}
+
+// ══════════════════════════════════════════════════════
+//  ⑧ Salt — A&Z logic
+//  Target: 4,000 ppm
+//  For every 1,000 units below 4,000: add one 20 kg bag per 20,000 L
+//  bags = (deficit / 1000) × (vol / 20000)
+// ══════════════════════════════════════════════════════
+function calcSalt() {
+  const salt = parseFloat(document.getElementById('val-salt').value);
+  const vol = getVolLitres();
+
+  if (isNaN(salt)) {
+    setCardStatus('card-salt', ''); setBadge('badge-salt', '', '— Enter a reading');
+    setResult('result-salt', '<div class="result-empty">Enter your current salt level and pool volume.</div>');
+    setSummary('salt', null); return;
+  }
+
+  const TARGET_SALT = 4000;
+
+  let status, badgeText;
+  if (salt >= 3800 && salt <= 4200)    { status = 'good'; badgeText = '✓ At Target (~4,000 ppm)'; }
+  else if (salt >= 3000 && salt < 3800){ status = 'warn'; badgeText = '↓ Below Target — Add Salt'; }
+  else if (salt > 4200 && salt <= 5000){ status = 'warn'; badgeText = '↑ Above Target'; }
+  else if (salt < 3000)               { status = 'bad';  badgeText = '↓↓ Very Low — Cell at Risk'; }
+  else                                { status = 'bad';  badgeText = '↑↑ Too High — Cell Damage'; }
+
+  setCardStatus('card-salt', status);
+  setBadge('badge-salt', status === 'good' ? 'good' : status === 'warn' ? 'warn' : 'bad', badgeText);
+
+  if (status === 'good') {
+    setResult('result-salt', goodHTML(`Salt level ${salt.toFixed(0)} ppm is at the target of 4,000 ppm.`));
+    setSummary('salt', null); return;
+  }
+
+  if (!vol) { setResult('result-salt', noVolHTML()); setSummary('salt', null); return; }
+
+  if (salt < TARGET_SALT) {
+    const deficit = TARGET_SALT - salt;
+    // bags = (deficit / 1000) × (vol / 20000)
+    const bags = (deficit / 1000) * (vol / 20000);
+    const bagsRounded = Math.ceil(bags * 10) / 10;
+    const bagsDisplay = bagsRounded % 1 === 0 ? bagsRounded.toFixed(0) : bagsRounded.toFixed(1);
+    const kgTotal = bagsRounded * 20;
+    setResult('result-salt', doseHTML(
+      `Add <strong>pool-grade NaCl salt</strong> to raise from ${salt.toFixed(0)} → 4,000 ppm`,
+      bagsDisplay, `× 20 kg bag${bagsRounded !== 1 ? 's' : ''} (${kgTotal.toFixed(0)} kg total)`,
+      `Use only pool-grade salt (99%+ pure NaCl). Broadcast evenly across pool surface. Allow 24 hrs of full circulation before retesting.`
+    ));
+    setSummary('salt', { name: 'Salt', severity: status, reading: `Current: ${salt.toFixed(0)} ppm — Target: 4,000 ppm`, action: `Add ${bagsDisplay} × 20 kg bag(s) pool-grade NaCl`, dose: `${bagsDisplay} bag${bagsRounded !== 1 ? 's' : ''}` });
+  } else {
+    // Too high — dilution
+    const dilutePct = Math.round(((salt - TARGET_SALT) / salt) * 100);
+    const drainVol = Math.round(vol * dilutePct / 100);
+    const dStr = drainVol >= 1000 ? (drainVol/1000).toFixed(1) + (unitMode==='gallons'?' k gal':' kL') : drainVol + (unitMode==='gallons'?' gal':' L');
+    setResult('result-salt', `<div class="result-action">Salt can only be reduced by dilution:</div>
+<div class="result-dilute">Drain approximately <strong>${dilutePct}%</strong> of pool (~${dStr}) and refill with fresh water to bring salt down to ~4,000 ppm.</div>
+<div class="result-note">Sustained high salt levels cause accelerated chlorinator cell wear and corrosion of metal fittings.</div>`);
+    setSummary('salt', { name: 'Salt', severity: status, reading: `Current: ${salt.toFixed(0)} ppm — Target: 4,000 ppm`, action: `Drain & refill ~${dilutePct}% of pool (~${dStr})`, dose: null });
+  }
+}
+
+// ══════════════════════════════════════════════════════
+//  RECALC ALL
+// ══════════════════════════════════════════════════════
+function recalcAll() {
+  calcPH();
+  calcCL();
+  calcTA();
+  calcCYA();
+  calcCH();
+  calcPhos();
+  calcClar();
+  calcSalt();
+}
+
+// Initial run
+recalcAll();
+</script>
+</body>
+</html>
